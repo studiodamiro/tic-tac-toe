@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tic-Tac-Toe</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        table {
+            margin: auto;
+            border-collapse: collapse;
+        }
+
+        td {
+            width: 80px;
+            height: 80px;
+            border: 1px solid black;
+            font-size: 48px;
+            text-align: center;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
+        td:hover {
+            background-color: #eee;
+        }
+
+        .player1 {
+            color: blue;
+        }
+
+        .player2 {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Tic-Tac-Toe</h1>
+    <table>
+        <tr>
+            <td id="0"></td>
+            <td id="1"></td>
+            <td id="2"></td>
+        </tr>
+        <tr>
+            <td id="3"></td>
+            <td id="4"></td>
+            <td id="5"></td>
+        </tr>
+        <tr>
+            <td id="6"></td>
+            <td id="7"></td>
+            <td id="8"></td>
+        </tr>
+    </table>
+    <p id="turn"></p>
+
+    <script>
+        // Initialize game variables
+        let currentPlayer = 1;
+        let gameBoard = ['', '', '', '', '', '', '', '', ''];
+        let gameOver = false;
+        let turnElement = document.getElementById('turn');
+        turnElement.innerHTML = `Player ${currentPlayer}'s turn`;
+
+        // Add click event listeners to each cell
+        let cells = document.getElementsByTagName('td');
+        for (let i = 0; i < cells.length; i++) {
+            cells[i].addEventListener('click', function () {
+                if (!gameOver && this.innerHTML === '') {
+                    this.innerHTML = currentPlayer === 1 ? 'X' : 'O';
+                    gameBoard[i] = currentPlayer === 1 ? 'X' : 'O';
+
+                    // Check for a win or tie
+                    if (checkWin() || checkTie()) {
+                        gameOver = true;
+                        turnElement.innerHTML = gameOver ? 'Game over' : `Player ${currentPlayer}'s turn`;
+                    } else {
+                        currentPlayer = currentPlayer === 1 ? 2 : 1;
+                        turnElement.innerHTML = `Player ${currentPlayer}'s turn`;
+                    }
+                }
+            });
+        }
+
+        function checkWin() {
+            // Check rows
+            for (let i = 0; i < 9; i += 3) {
+                if (gameBoard[i] !== '' && gameBoard[i] === gameBoard[i + 1] && gameBoard[i + 1] === gameBoard[i + 2]) {
+                    highlightWinningCells(i, i + 1, i + 2);
+                    turnElement.innerHTML = `Player ${currentPlayer} wins!`;
+                    return true;
+                }
+            }
+
+            // Check columns
+            for (let i = 0; i < 3; i++) {
+                if (gameBoard[i] !== '' && gameBoard[i] === gameBoard[i + 3] && gameBoard[i + 3] === gameBoard[i + 6]) {
+                    highlightWinningCells(i, i + 3, i + 6);
+                    turnElement.innerHTML = `Player
+                    ${currentPlayer} wins!`;
+                    return true;
+                }
+            }		// Check diagonals
+            if (gameBoard[0] !== '' && gameBoard[0] === gameBoard[4] && gameBoard[4] === gameBoard[8]) {
+                highlightWinningCells(0, 4, 8);
+                turnElement.innerHTML = `Player ${currentPlayer} wins!`;
+                return true;
+            }
+            if (gameBoard[2] !== '' && gameBoard[2] === gameBoard[4] && gameBoard[4] === gameBoard[6]) {
+                highlightWinningCells(2, 4, 6);
+                turnElement.innerHTML = `Player ${currentPlayer} wins!`;
+                return true;
+            }
+
+            return false;
+        }
+
+        function checkTie() {
+            if (gameBoard.every(cell => cell !== '')) {
+                turnElement.innerHTML = 'Tie game!';
+                return true;
+            }
+            return false;
+        }
+
+        function highlightWinningCells(cell1, cell2, cell3) {
+            document.getElementById(cell1).style.backgroundColor = '#0f0';
+            document.getElementById(cell2).style.backgroundColor = '#0f0';
+            document.getElementById(cell3).style.backgroundColor = '#0f0';
+        }
+    </script>
+</body>
+
+</html>
