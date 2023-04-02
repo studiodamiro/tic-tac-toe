@@ -75,11 +75,13 @@ header {
     background: var(--white);
 }
 
-.down {
+.down,
+.down:hover {
     background: var(--gray);
     aspect-ratio: 1 / 0.975;
     box-shadow: inset 0px -4px 1px 2px #00000055, 0 2px 2px #000;
     margin-top: 12px;
+    cursor: default;
 }
 
 .marked-x,
