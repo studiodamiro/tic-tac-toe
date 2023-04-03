@@ -82,6 +82,8 @@ header {
     box-shadow: inset 0px -4px 1px 2px #00000055, 0 2px 2px #000;
     margin-top: 12px;
     cursor: default;
+    /* DISABLES CLICK EVENT */
+    pointer-events: none;
 }
 
 .x,
@@ -89,6 +91,16 @@ header {
     background-image: url('assets/mark-x.svg');
     background-repeat: no-repeat;
     background-position: center 18px;
+    /* DISABLES CLICK EVENT */
+    pointer-events: none;
+}
+
+.highlight-win {
+    background-color: var(--yellow);
+}
+
+.highlight-lose {
+    background-color: var(--red);
 }
 
 .o,
