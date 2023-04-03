@@ -4,15 +4,13 @@ The Odin Project - Intermediate JS project
 
 ## Warning! This is a work in progress
 
-Will try my utmost est to implement best practices.
-
 LIVE SITE [HERE](https://hello-damiro.github.io/tic-tac-toe)
 
 </br>
 
 **Day 1:** Prep initial files. review modularization concepts and study how to implement it to the project.
 
-**Day 2:** Struggling to implement non-spaghetti code using object literals. Found a simpler way to disable click event using only CSS!
+**Day 2:** Struggling to implement non-spaghetti code using object literals. Found a simpler way to disable click event using only CSS! Overtime! Didnt implemented minimax algo, but happy with the outcome with _dumb_ opponent.
 
 </br>
 
