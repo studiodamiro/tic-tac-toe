@@ -36,8 +36,9 @@ export let arbiter = {
         this.oCells = [];
         this.tileDownCounter = 0;
         this.availableCells = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+        board.protectAvailableCells(false);
     },
-    updateStats: async function (mark, cellIndex) {
+    updateStats: function (mark, cellIndex) {
         let index = this.availableCells.indexOf(cellIndex);
         if (index > -1) this.availableCells.splice(index, 1);
         mark === 'x' ? this.xCells.push(cellIndex) : this.oCells.push(cellIndex);
@@ -45,13 +46,13 @@ export let arbiter = {
         console.log(
             this.tileDownCounter + ':' + mark + ': ' + cellIndex + ' | ' + this.availableCells
         );
-        await this.checkWin();
+        this.checkWin();
         this.round.textContent = this.tileDownCounter.toString();
         this.playerScoreText.textContent = this.playerScore.toString();
         this.opponentScoreText.textContent = this.opponentScore.toString();
     },
     checkWin: async function () {
-        // if (this.availableCells !== []) {
+        board.protectAvailableCells(true);
         if (this.tileDownCounter <= 8) {
             // Check all winning patterns for X and O
             for (let pattern of arbiter.winningPatterns) {
@@ -82,18 +83,18 @@ export let arbiter = {
             }
             if (this.tileDownCounter == 8) {
                 // New game
+
                 await timer(this.delay);
-                this.init();
                 board.setGame();
+                this.init();
             }
             console.log(this.xCells + ' -X vs O- ' + this.oCells);
         } else {
             // New game
             await timer(this.delay);
-            this.init();
             board.setGame();
+            this.init();
         }
-        this.tileDownCounter++;
     },
 };
 

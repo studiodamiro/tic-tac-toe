@@ -54,6 +54,7 @@ export let board = {
     marked: function (mark, index) {
         this.cells[index].classList.add('down');
         this.cells[index].classList.add(mark);
+        arbiter.tileDownCounter++;
     },
     protectAvailableCells: function (status) {
         arbiter.availableCells.forEach((cell, index) => {
@@ -77,6 +78,7 @@ export let board = {
         winningCells.forEach((cell) => this.cells[cell].classList.add(winColor));
 
         // New game
+        this.protectAvailableCells(true);
         await timer(arbiter.delay);
         arbiter.init();
         this.setGame();
