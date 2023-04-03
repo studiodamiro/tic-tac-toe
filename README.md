@@ -12,7 +12,7 @@ LIVE SITE [HERE](https://hello-damiro.github.io/tic-tac-toe)
 
 **Day 1:** Prep initial files. review modularization concepts and study how to implement it to the project.
 
-**Day 2:** Struggling to implement non-spaghetti code using object literals.
+**Day 2:** Struggling to implement non-spaghetti code using object literals. Found a simpler way to disable click event using only CSS!
 
 </br>
 
