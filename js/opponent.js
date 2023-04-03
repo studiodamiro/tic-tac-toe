@@ -8,14 +8,13 @@ export let opponent = {
         else return 'x';
     },
     pickCell: async function () {
-        let pickaCellInArrayLength = randomBetween(0, arbiter.availableCells.length - 1);
-        let cellIndex = arbiter.availableCells[pickaCellInArrayLength];
-
-        await timer(arbiter.delay);
-        arbiter.updateStats(this.marker(), cellIndex);
-
         if (arbiter.tileDownCounter <= 8) {
+            let pickaCellInArrayLength = randomBetween(0, arbiter.availableCells.length - 1);
+            let cellIndex = arbiter.availableCells[pickaCellInArrayLength];
+            await timer(arbiter.delay);
+            arbiter.updateStats(this.marker(), cellIndex);
             board.marked(this.marker(), cellIndex);
         }
+        board.protectAvailableCells(false);
     },
 };

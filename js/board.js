@@ -47,12 +47,23 @@ export let board = {
                 arbiter.updateStats(this.player, index);
                 this.marked(this.player, index);
                 opponent.pickCell();
+                this.protectAvailableCells(true);
             });
         });
     },
     marked: function (mark, index) {
         this.cells[index].classList.add('down');
         this.cells[index].classList.add(mark);
+    },
+    protectAvailableCells: function (status) {
+        arbiter.availableCells.forEach((cell, index) => {
+            let cellIndex = arbiter.availableCells[index];
+            if (status) {
+                this.cells[cellIndex].classList.add('noClick');
+            } else {
+                this.cells[cellIndex].classList.remove('noClick');
+            }
+        });
     },
     highlightWinningCells: async function (winner, winningCells) {
         let winColor = '';
@@ -63,16 +74,7 @@ export let board = {
             arbiter.opponentScore++;
             winColor = 'highlight-lose';
         }
-
         winningCells.forEach((cell) => this.cells[cell].classList.add(winColor));
-
-        this.cells.forEach((cell) => cell.classList.add('noClick'));
-
-        if (winner === 'x') {
-        } else if (winner === 'o') {
-        } else {
-            console.log('Draw!');
-        }
 
         // New game
         await timer(arbiter.delay);

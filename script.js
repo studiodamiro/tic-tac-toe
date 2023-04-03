@@ -18,12 +18,13 @@ export let arbiter = {
         [0, 4, 8],
         [2, 4, 6],
     ],
+
     delay: 1500, // in ms
     tileDownCounter: 0,
     hasWinner: false,
-    isDraw: false,
     playerScore: 0,
     opponentScore: 0,
+
     cells: document.querySelectorAll('.cell'),
     round: document.querySelector('header em'),
     playerScoreText: document.querySelector('.player'),
@@ -31,13 +32,12 @@ export let arbiter = {
 
     init: function () {
         this.hasWinner = false;
-        this.isDraw = false;
         this.xCells = [];
         this.oCells = [];
         this.tileDownCounter = 0;
         this.availableCells = [0, 1, 2, 3, 4, 5, 6, 7, 8];
     },
-    updateStats: function (mark, cellIndex) {
+    updateStats: async function (mark, cellIndex) {
         let index = this.availableCells.indexOf(cellIndex);
         if (index > -1) this.availableCells.splice(index, 1);
         mark === 'x' ? this.xCells.push(cellIndex) : this.oCells.push(cellIndex);
@@ -45,12 +45,13 @@ export let arbiter = {
         console.log(
             this.tileDownCounter + ':' + mark + ': ' + cellIndex + ' | ' + this.availableCells
         );
-        this.checkWin();
+        await this.checkWin();
         this.round.textContent = this.tileDownCounter.toString();
         this.playerScoreText.textContent = this.playerScore.toString();
         this.opponentScoreText.textContent = this.opponentScore.toString();
     },
     checkWin: async function () {
+        // if (this.availableCells !== []) {
         if (this.tileDownCounter <= 8) {
             // Check all winning patterns for X and O
             for (let pattern of arbiter.winningPatterns) {
@@ -79,15 +80,20 @@ export let arbiter = {
                     board.highlightWinningCells('o', winningCells);
                 }
             }
-            this.tileDownCounter++;
+            if (this.tileDownCounter == 8) {
+                // New game
+                await timer(this.delay);
+                this.init();
+                board.setGame();
+            }
             console.log(this.xCells + ' -X vs O- ' + this.oCells);
         } else {
-            // Draw game
-            this.isDraw = true;
+            // New game
             await timer(this.delay);
             this.init();
             board.setGame();
         }
+        this.tileDownCounter++;
     },
 };
 
