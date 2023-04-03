@@ -54,6 +54,7 @@ header {
     text-transform: uppercase;
     letter-spacing: 0.2rem;
     color: var(--yellow);
+    padding-bottom: 32px;
 }
 
 .grid {
@@ -67,6 +68,7 @@ header {
     border-radius: 8px;
     aspect-ratio: 1 / 1.1;
     box-shadow: inset 0px -16px 1px 2px #00000055, 0 2px 2px #000;
+    transition: background-color 0.5s ease;
 }
 
 .cell:hover {
@@ -81,6 +83,7 @@ header {
     box-shadow: inset 0px -4px 1px 2px #00000055, 0 2px 2px #000;
     margin-top: 12px;
     cursor: default;
+    transition: background-color 0.5s ease;
     /* DISABLES CLICK EVENT: none or auto */
     pointer-events: none;
 }
@@ -121,12 +124,26 @@ header {
 
 .stats {
     margin: 0;
+    color: var(--gray);
     display: flex;
     justify-content: space-between;
     margin: 32px 0;
+    padding: 16px 24px;
+    border: 1px solid #000;
+    box-shadow: inset 0px 4px 1px 2px #00000033;
+    border-radius: 8px;
+    font-size: 1.4rem;
+    letter-spacing: 0.1rem;
+    vertical-align: text-bottom;
+}
+
+.stats em {
+    color: var(--yellow);
 }
 
 .score {
+    color: var(--yellow);
+    font-weight: 700;
 }
 
 footer {

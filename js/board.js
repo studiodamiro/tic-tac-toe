@@ -18,6 +18,7 @@ export let board = {
         [2, 4, 6],
     ],
     tileDownCounter: 1,
+    delay: 1500, // in ms
     ingame: true,
     grid: document.querySelector('.grid'),
     init: function () {
@@ -113,7 +114,7 @@ export let board = {
         } else {
             console.log('Draw!');
         }
-        await timer(3000);
+        await timer(this.delay);
         board.setGame();
     },
 };
