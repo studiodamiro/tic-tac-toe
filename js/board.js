@@ -1,4 +1,4 @@
-import { timer } from '/js/helper.js';
+import { timer } from './helper.js';
 
 export let board = {
     player: 'x',
