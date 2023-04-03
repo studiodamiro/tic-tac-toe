@@ -12,9 +12,9 @@ LIVE SITE [HERE](https://hello-damiro.github.io/tic-tac-toe)
 
 **Day 1:** Prep initial files. review modularization concepts and study how to implement it to the project.
 
-<!-- ## Screenshot
+## Screenshot
 
-![Screenshot](https://github.com/hello-damiro/odin-library/blob/main/assets/screenshot.png?raw=true) -->
+![Screenshot](https://github.com/hello-damiro/tic-tac-toe/blob/main/assets/screenshot.png?raw=true)
 
 ## Challenge
 

@@ -84,15 +84,15 @@ header {
     cursor: default;
 }
 
-.marked-x,
-.marked-x:hover {
+.x,
+.x:hover {
     background-image: url('assets/mark-x.svg');
     background-repeat: no-repeat;
     background-position: center 18px;
 }
 
-.marked-o,
-.marked-o:hover {
+.o,
+.o:hover {
     background-image: url('assets/mark-o.svg');
     background-repeat: no-repeat;
     background-position: center 12px;
