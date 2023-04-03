@@ -54,7 +54,6 @@ header {
     text-transform: uppercase;
     letter-spacing: 0.2rem;
     color: var(--yellow);
-    margin-bottom: 64px;
 }
 
 .grid {
@@ -86,6 +85,13 @@ header {
     pointer-events: none;
 }
 
+.play,
+.play:hover {
+    background-image: url('assets/mark-play.svg');
+    background-repeat: no-repeat;
+    background-position: center 22px;
+}
+
 .x,
 .x:hover {
     background-image: url('assets/mark-x.svg');
@@ -111,6 +117,16 @@ header {
 .noClick {
     /* DISABLES CLICK EVENT: none or auto */
     pointer-events: none;
+}
+
+.stats {
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    margin: 32px 0;
+}
+
+.score {
 }
 
 footer {

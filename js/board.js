@@ -1,3 +1,5 @@
+import { timer } from '/js/helper.js';
+
 export let board = {
     player: 'x',
     xCells: [],
@@ -15,14 +17,24 @@ export let board = {
         [0, 4, 8],
         [2, 4, 6],
     ],
-    counter: 1,
+    tileDownCounter: 1,
+    ingame: true,
     grid: document.querySelector('.grid'),
     init: function () {
         this.xCells = [];
         this.oCells = [];
-        this.counter = 1;
         this.render();
-        this.selectCell();
+        this.cells.forEach((cell) => cell.classList.add('down'));
+        this.cells[4].classList.remove('down');
+        this.cells[4].classList.add('play');
+        this.cells[4].addEventListener('click', (e) => {
+            if (this.ingame) {
+                this.ingame = false;
+                this.cells.forEach((cell) => cell.classList.remove('down'));
+                this.cells[4].classList.remove('play');
+                this.selectCell();
+            }
+        });
     },
     render: function () {
         this.grid.textContent = '';
@@ -33,13 +45,26 @@ export let board = {
         }
         this.cells = document.querySelectorAll('.cell');
     },
+    setGame: function () {
+        this.xCells = [];
+        this.oCells = [];
+        this.tileDownCounter = 1;
+        this.cells.forEach((cell) => {
+            cell.classList.remove('down');
+            cell.classList.remove('noClick');
+            cell.classList.remove('highlight-win');
+            cell.classList.remove('highlight-lose');
+            cell.classList.remove('o');
+            cell.classList.remove('x');
+        });
+    },
     selectCell: function () {
         this.cells.forEach((cell, index) => {
             cell.addEventListener('click', (e) => {
                 this.addCell(index);
                 this.marked(this.player, index);
                 this.checkWin();
-                this.counter++;
+                this.tileDownCounter++;
             });
         });
     },
@@ -56,7 +81,7 @@ export let board = {
             let xCount = 0;
             let oCount = 0;
             let winningCells = [];
-            if (this.counter < 9) {
+            if (this.tileDownCounter < 9) {
                 // Check how many X's and O's are in the pattern
                 for (let cell of pattern) {
                     if (this.xCells.includes(cell)) {
@@ -76,7 +101,7 @@ export let board = {
             }
         }
     },
-    declareWinner: function (winner, winningCells) {
+    declareWinner: async function (winner, winningCells) {
         let winColor = '';
         if (this.player === winner) winColor = 'highlight-win';
         else winColor = 'highlight-lose';
@@ -88,6 +113,7 @@ export let board = {
         } else {
             console.log('Draw!');
         }
-        // board.init();
+        await timer(3000);
+        board.setGame();
     },
 };
