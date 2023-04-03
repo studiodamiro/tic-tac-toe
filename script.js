@@ -22,8 +22,13 @@ export let arbiter = {
     tileDownCounter: 0,
     hasWinner: false,
     isDraw: false,
+    playerScore: 0,
+    opponentScore: 0,
     cells: document.querySelectorAll('.cell'),
     round: document.querySelector('header em'),
+    playerScoreText: document.querySelector('.player'),
+    opponentScoreText: document.querySelector('.opponent'),
+
     init: function () {
         this.hasWinner = false;
         this.isDraw = false;
@@ -41,6 +46,9 @@ export let arbiter = {
             this.tileDownCounter + ':' + mark + ': ' + cellIndex + ' | ' + this.availableCells
         );
         this.checkWin();
+        this.round.textContent = this.tileDownCounter.toString();
+        this.playerScoreText.textContent = this.playerScore.toString();
+        this.opponentScoreText.textContent = this.opponentScore.toString();
     },
     checkWin: async function () {
         if (this.tileDownCounter <= 8) {
@@ -72,7 +80,6 @@ export let arbiter = {
                 }
             }
             this.tileDownCounter++;
-            this.round.textContent = this.tileDownCounter.toString();
             console.log(this.xCells + ' -X vs O- ' + this.oCells);
         } else {
             // Draw game

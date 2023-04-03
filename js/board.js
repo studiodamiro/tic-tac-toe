@@ -56,8 +56,13 @@ export let board = {
     },
     highlightWinningCells: async function (winner, winningCells) {
         let winColor = '';
-        if (this.player === winner) winColor = 'highlight-win';
-        else winColor = 'highlight-lose';
+        if (this.player === winner) {
+            arbiter.playerScore++;
+            winColor = 'highlight-win';
+        } else {
+            arbiter.opponentScore++;
+            winColor = 'highlight-lose';
+        }
 
         winningCells.forEach((cell) => this.cells[cell].classList.add(winColor));
 
