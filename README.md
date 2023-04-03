@@ -12,6 +12,10 @@ LIVE SITE [HERE](https://hello-damiro.github.io/tic-tac-toe)
 
 **Day 1:** Prep initial files. review modularization concepts and study how to implement it to the project.
 
+**Day 2:** Struggling to implement non-spaghetti code using object literals.
+
+</br>
+
 ## Screenshot
 
 ![Screenshot](https://github.com/hello-damiro/tic-tac-toe/blob/main/assets/screenshot.png?raw=true)
