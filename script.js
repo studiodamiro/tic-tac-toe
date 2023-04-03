@@ -23,6 +23,7 @@ export let arbiter = {
     hasWinner: false,
     isDraw: false,
     cells: document.querySelectorAll('.cell'),
+    round: document.querySelector('header em'),
     init: function () {
         this.hasWinner = false;
         this.isDraw = false;
@@ -39,7 +40,6 @@ export let arbiter = {
         console.log(
             this.tileDownCounter + ':' + mark + ': ' + cellIndex + ' | ' + this.availableCells
         );
-
         this.checkWin();
     },
     checkWin: async function () {
@@ -72,6 +72,7 @@ export let arbiter = {
                 }
             }
             this.tileDownCounter++;
+            this.round.textContent = this.tileDownCounter.toString();
             console.log(this.xCells + ' -X vs O- ' + this.oCells);
         } else {
             // Draw game
