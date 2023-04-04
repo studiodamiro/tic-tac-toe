@@ -98,7 +98,7 @@ export let opponent = {
                 bestMove = cell;
             }
         }
-        console.log(`The best move is index: ${bestMove}`);
+        // console.log(`The best move is index: ${bestMove}`);
         return bestMove;
     },
 };

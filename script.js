@@ -46,6 +46,7 @@ export let arbiter = {
         console.log(
             this.tileDownCounter + ':' + mark + ': ' + cellIndex + ' | ' + this.availableCells
         );
+
         this.checkWin();
         this.round.textContent = this.tileDownCounter.toString();
         this.playerScoreText.textContent = this.playerScore.toString();
@@ -88,7 +89,7 @@ export let arbiter = {
                 board.setGame();
                 this.init();
             }
-            console.log(this.xCells + ' -X vs O- ' + this.oCells);
+            console.log('[ ' + this.xCells + ' ] -X vs O- [ ' + this.oCells + ' ]');
         } else {
             // New game
             await timer(this.delay);
@@ -98,5 +99,8 @@ export let arbiter = {
     },
 };
 
-board.player = 'o'; // x or o
+// setting 'o' to 'board.pplayer' doesnt have the chance to win with AI, so we need to set it to 'o'
+// using 'x' otherwise makes the player have a chance to win with AI
+// this is due to the args in 'findBestMove' function that will interchange the arrays being used
+board.player = 'o';
 board.init();
