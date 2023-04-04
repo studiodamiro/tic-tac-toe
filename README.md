@@ -2,21 +2,25 @@
 
 The Odin Project - Intermediate JS project
 
-## Warning! This is a work in progress
-
-LIVE SITE [HERE](https://hello-damiro.github.io/tic-tac-toe)
-
 </br>
 
 **Day 1:** Prep initial files. review modularization concepts and study how to implement it to the project.
 
 **Day 2:** Struggling to implement non-spaghetti code using object literals. Found a simpler way to disable click event using only CSS! Overtime! Didnt implemented minimax algo, but happy with the outcome with _dumb_ opponent.
 
+**Day 3:** I cannot move on considering the fact that I have an unfinished business with this project. So I spent another 2 hours studying minimax. Ask chatGPT to make an algorithm for it. You see, one is close to impossible implementing algo without studying it first.
+
+LIVE SITE [HERE](https://hello-damiro.github.io/tic-tac-toe)
+
 </br>
 
 ## Screenshot
 
 ![Screenshot](https://github.com/hello-damiro/tic-tac-toe/blob/main/assets/screenshot.png?raw=true)
+
+## Minimax
+
+The `findBestMove` function calls the `minimax` function for each available cell and returns the index of the best move based on the resulting score. The `minimax` function recursively calls itself to simulate possible moves by both players and returns a score that indicates the best move for the current player. The `checkWinner` function checks if X or O has won based on the current cell selections.
 
 ## Challenge
 

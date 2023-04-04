@@ -67,6 +67,7 @@ export let board = {
         });
     },
     highlightWinningCells: async function (winner, winningCells) {
+        this.protectAvailableCells(true);
         let winColor = '';
         if (this.player === winner) {
             arbiter.playerScore++;
@@ -78,7 +79,6 @@ export let board = {
         winningCells.forEach((cell) => this.cells[cell].classList.add(winColor));
 
         // New game
-        this.protectAvailableCells(true);
         await timer(arbiter.delay);
         arbiter.init();
         this.setGame();

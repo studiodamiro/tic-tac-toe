@@ -98,5 +98,5 @@ export let arbiter = {
     },
 };
 
-board.player = 'x'; // x or o
+board.player = 'o'; // x or o
 board.init();
