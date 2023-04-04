@@ -1,6 +1,10 @@
 # tic-tac-toe
 
-The Odin Project - Intermediate JS project
+## The Odin Project - Intermediate JS project
+
+Changes is hard specially if you adapting to an environment where you are not familiar. Im new to implementing concepts and best practices to JS. This project pushes myself to the edge but, im seeing myself getting more and more into it. Hopefully I would last.
+
+LIVE SITE [HERE](https://hello-damiro.github.io/tic-tac-toe)
 
 </br>
 
@@ -9,8 +13,6 @@ The Odin Project - Intermediate JS project
 **Day 2:** Struggling to implement non-spaghetti code using object literals. Found a simpler way to disable click event using only CSS! Overtime! Didnt implemented minimax algo, but happy with the outcome with _dumb_ opponent.
 
 **Day 3:** I cannot move on considering the fact that I have an unfinished business with this project. So I spent another 2 hours studying minimax. Ask chatGPT to make an algorithm for it. You see, one is close to impossible implementing algo without studying it first.
-
-LIVE SITE [HERE](https://hello-damiro.github.io/tic-tac-toe)
 
 </br>
 
