@@ -4,7 +4,7 @@
 
 Changes is hard specially if you adapting to an environment where you are not familiar. Im new to implementing concepts and best practices to JS. This project pushes myself to the edge but, im seeing myself getting more and more into it. Hopefully I would last.
 
-LIVE SITE [HERE](https://hello-damiro.github.io/tic-tac-toe)
+LIVE SITE [HERE](https://studiodamiro.github.io/tic-tac-toe)
 
 </br>
 
